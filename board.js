@@ -112,13 +112,13 @@ function generate(board, player) {
 // GAME - return game score
 function score(board, maxPlayer, minPlayer) {
   if (board.isWin() === maxPlayer) {
-    console.log('Win: ' + maxPlayer);
+    //console.log('Win: ' + maxPlayer);
     return 10;
   } else if (board.isWin() === minPlayer) {
-    console.log('Win: ' + minPlayer);
+    //console.log('Win: ' + minPlayer);
     return -10;
   } else {
-    console.log('Draw');
+    //console.log('Draw');
     return 0;
   }
 }
@@ -128,8 +128,6 @@ var bestChoice;
 function minimax(board, maxPlayer) {
   // check if board is terminal node
   if (board.isTerminal()) {
-    board.print();
-    //console.log(score(board, 'X', 'O') + '\n');
     return score(board, 'X', 'O');
   }
 
@@ -141,23 +139,35 @@ function minimax(board, maxPlayer) {
   if (maxPlayer) {
     // generate all possible next moves
     nextMoves = generate(board, 'X');
+    // debug info
+    // console.log('X player turn, boards generated: ' + nextMoves.length);
+    // for (var h = 0; h < nextMoves.length; h++) {
+    //   nextMoves[h].print();
+    //   console.log('\n');
+    // }
     // call minimax in all generated boards
     for (var i = 0; i < nextMoves.length; i++) {
       scores.push(minimax(nextMoves[i], false));
-      var minScore = Math.min.apply(null, scores); // TODO: find min value in scores
-      bestChoice = nextMoves[scores.indexOf(minScore)];
-      return minScore;
     }
+    var maxScore = Math.max.apply(null, scores); // find min value in scores
+    bestChoice = nextMoves[scores.indexOf(maxScore)];
+    return maxScore;
   } else {
     // generate all possible next moves
     nextMoves = generate(board, 'O');
+    // debug info
+    // console.log('O player turn, boards generated: ' + nextMoves.length);
+    // for (var h = 0; h < nextMoves.length; h++) {
+    //   nextMoves[h].print();
+    //   console.log('\n');
+    // }
     // call minimax in all generated boards
     for (var j = 0; j < nextMoves.length; j++) {
       scores.push(minimax(nextMoves[j], true));
-      var maxScore = Math.max.apply(null, scores); // TODO: find max value in scores
-      bestChoice = nextMoves[scores.indexOf(minScore)];
-      return maxScore;
     }
+    var minScore = Math.min.apply(null, scores); // Tfind max value in scores
+    bestChoice = nextMoves[scores.indexOf(minScore)];
+    return minScore;
   }
 }
 
@@ -176,19 +186,20 @@ var board = new Board();
 // board.set('X', 2, 2);
 
 // example non-terminal board
-board.set('O', 0, 0);
+board.set('X', 0, 0);
 board.set('O', 0, 1);
 board.set('X', 0, 2);
-board.set('-', 1, 0);
-board.set('X', 1, 1);
-board.set('O', 1, 2);
-board.set('O', 2, 0);
-board.set('X', 2, 1);
-board.set('X', 2, 2);
+// board.set('O', 1, 0);
+board.set('O', 1, 1);
+// board.set('O', 1, 2);
+board.set('X', 2, 0);
+// board.set('O', 2, 1);
+board.set('O', 2, 2);
 
 board.print();
 console.log('\n');
-console.log(minimax(board, true));
+minimax(board, true);
+console.log(bestChoice.print());
 
 // var boards = generate(board, 'X');
 // for (var i = 0; i < boards.length; i++) {
