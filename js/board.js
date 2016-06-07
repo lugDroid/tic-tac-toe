@@ -199,7 +199,7 @@ board.set('O', 2, 2);
 board.print();
 console.log('\n');
 minimax(board, true);
-console.log(bestChoice.print());
+bestChoice.print();
 
 // var boards = generate(board, 'X');
 // for (var i = 0; i < boards.length; i++) {
