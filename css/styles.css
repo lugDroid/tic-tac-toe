@@ -12,14 +12,26 @@ html, body, .container {
 
 body > .container {
   height: auto;
-  min-height: 60vh;
+}
+
+.title {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.board {
   background-color: #bbb;
-  width: 60vw;
+  min-height: 60vh;
+  width: 60vh ;
+  margin: 0 auto;
+  display: inline-block;
 }
 
 .square2 {
-  border: 2px black;
+  /*border: 20px black;*/
   background-color: #555;
   height: 20vh;
+  width: 20vh;
+  display: inline-block;
   /*display: block;*/
 }
