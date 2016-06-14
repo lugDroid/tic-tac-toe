@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/lugDroid/tic-tac-toe#readme",
   "dependencies": {
+    "jquery": "^3.0.0",
     "normalize.css": "^4.1.1"
   }
 }
