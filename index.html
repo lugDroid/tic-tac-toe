@@ -8,54 +8,53 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Tic Tac Toe</title>
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
-
     <!-- fontAwesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-    <!-- Roboto font -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100" rel="stylesheet" type="text/css">
+    <!-- Yanone Kaffeesatz font -->
+    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:200,400" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <!-- css -->
+    <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+
 </head>
 
 <body>
-  <div class="container">
-    <h1 class="text-center title">Tic Tac Toe</h1>
+  <!-- header -->
+  <header class="primary-header clearfix">
+      <h1>Tic Tac Toe</h1>
+      <h5>Implemented using minimax algorith</h5>
+  </header>
 
-    <!-- board grid -->
-    <div class="board">
-      <div class="row">
-        <div class="square2"></div>
-        <div class="col-md-4 square"></div>
-        <div class="col-md-4 square2"></div>
-      </div>
-      <div class="row">
-        <div class="col-md-4 square"></div>
-        <div class="col-md-4 square2"></div>
-        <div class="col-md-4 square"></div>
-      </div>
-      <div class="row">
-        <div class="col-md-4 square2"></div>
-        <div class="col-md-4 square"></div>
-        <div class="col-md-4 square2"></div>
-      </div>
+  <!-- main content -->
+
+  <!-- board -->
+  <section class="board container">
+    <!-- first row -->
+    <div class="row clearfix">
+      <div class="fa fa-times square border-right border-bottom"></div>
+      <div class="fa fa-circle-o square border-right border-bottom"></div>
+      <div class="square border-bottom"></div>
     </div>
-  </div>
+    <!-- second row -->
+    <div class="row clearfix">
+      <div class="square border-right border-bottom"></div>
+      <div class="fa fa-circle-o square border-right border-bottom"></div>
+      <div class="square border-bottom"></div>
+    </div>
+    <!-- third row -->
+    <div class="row clearfix">
+      <div class="square border-right"></div>
+      <div class="square border-right"></div>
+      <div class="square"></div>
+    </div>
+  </section>
 
-
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
+  <!-- footer -->
+  <section class="primary-footer">
+    <a href="#">lugDroid | 2016</a>
+  </section>
 
 </body>
 
