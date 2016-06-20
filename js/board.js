@@ -138,7 +138,7 @@ function minimax(board, maxPlayer) {
   // if next turn is for minPlayer
   if (maxPlayer) {
     // generate all possible next moves
-    nextMoves = generate(board, 'X');
+    nextMoves = generate(board, 'O');
     // debug info
     // console.log('X player turn, boards generated: ' + nextMoves.length);
     // for (var h = 0; h < nextMoves.length; h++) {
@@ -172,7 +172,7 @@ function minimax(board, maxPlayer) {
 }
 
 // tests
-var board = new Board();
+// var board = new Board();
 
 // example terminal draw board
 // board.set('O', 0, 0);
@@ -186,20 +186,20 @@ var board = new Board();
 // board.set('X', 2, 2);
 
 // example non-terminal board
-board.set('X', 0, 0);
-board.set('O', 0, 1);
-board.set('X', 0, 2);
-// board.set('O', 1, 0);
-board.set('O', 1, 1);
-// board.set('O', 1, 2);
-board.set('X', 2, 0);
-// board.set('O', 2, 1);
-board.set('O', 2, 2);
-
-board.print();
-console.log('\n');
-minimax(board, true);
-bestChoice.print();
+// board.set('X', 0, 0);
+// board.set('O', 0, 1);
+// board.set('X', 0, 2);
+// // board.set('O', 1, 0);
+// board.set('O', 1, 1);
+// // board.set('O', 1, 2);
+// board.set('X', 2, 0);
+// // board.set('O', 2, 1);
+// board.set('O', 2, 2);
+//
+// board.print();
+// console.log('\n');
+// minimax(board, true);
+// bestChoice.print();
 
 // var boards = generate(board, 'X');
 // for (var i = 0; i < boards.length; i++) {

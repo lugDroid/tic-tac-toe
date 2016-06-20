@@ -1,0 +1,21 @@
+{
+  "name": "tic-tac-toe",
+  "description": "",
+  "main": "main.js",
+  "authors": [
+    "lugDroid <lugdroid@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/lugDroid/tic-tac-toe",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "^3.0.0",
+    "normalize-css": "normalize.css#^4.1.1"
+  }
+}
