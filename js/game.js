@@ -27,13 +27,13 @@ var game = (function(){
   }
 
   // return game score
-  function score(board, maxPlayer, minPlayer) {
+  function score(board, maxPlayer, minPlayer, depth) {
     if (board.isWin() === maxPlayer) {
       //console.log('Win: ' + maxPlayer);
-      return 10;
+      return 10 - depth;
     } else if (board.isWin() === minPlayer) {
       //console.log('Win: ' + minPlayer);
-      return -10;
+      return depth - 10;
     } else {
       //console.log('Draw');
       return 0;
@@ -41,13 +41,13 @@ var game = (function(){
   }
 
   // minimax algorithm
-  function minimax(board, maxPlayer) {
+  function minimax(board, maxPlayer, depth) {
     var scores = [];
     var nextMoves = [];
 
     // check if board is terminal node
     if (board.isTerminal()) {
-      return score(board, 'X', 'O');
+      return score(board, 'X', 'O', depth);
     }
 
     // if next turn is for minPlayer
@@ -57,7 +57,7 @@ var game = (function(){
 
       // call minimax in all generated boards
       for (var i = 0; i < nextMoves.length; i++) {
-        scores.push(minimax(nextMoves[i], false));
+        scores.push(minimax(nextMoves[i], false, depth + 1));
       }
       var maxScore = Math.max.apply(null, scores); // find min value in scores
       bestChoice = nextMoves[scores.indexOf(maxScore)];
@@ -70,7 +70,7 @@ var game = (function(){
 
       // call minimax in all generated boards
       for (var j = 0; j < nextMoves.length; j++) {
-        scores.push(minimax(nextMoves[j], true));
+        scores.push(minimax(nextMoves[j], true, depth + 1));
       }
       var minScore = Math.min.apply(null, scores); // find max value in scores
       bestChoice = nextMoves[scores.indexOf(minScore)];
@@ -82,7 +82,7 @@ var game = (function(){
 
   // minimax wrapper function
   function nextMove(board) {
-    minimax(board, true);
+    minimax(board, true, 0);
     return bestChoice;
   }
 
