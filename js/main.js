@@ -34,9 +34,18 @@ $(document).ready(function() {
     $('#' + id).addClass("fa fa-circle-o");
     board.set('O', id[0], id[1]);
     // calculate next move
-    board = game.nextMove(board)
+    var nextMove = game.nextMove(board);
+
+    board = nextMove.board;
+    score = nextMove.score;
 
     render(board);
+
+    if (score > 0) {
+      $('h5').html('You lose');
+    } else if (score < 0) {
+      $('h5').html('You win');
+    }
 
   }
 });

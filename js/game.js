@@ -82,8 +82,11 @@ var game = (function(){
 
   // minimax wrapper function
   function nextMove(board) {
-    minimax(board, true, 0);
-    return bestChoice;
+    var score = minimax(board, true, 0);
+    return {
+      board: bestChoice,
+      score: score
+    }
   }
 
   // returned object
