@@ -24,13 +24,13 @@
   <!-- header -->
   <header class="primary-header clearfix">
       <h1>Tic Tac Toe</h1>
-      <h5>Implemented using minimax algorith</h5>
+      <h5 class="info">Implemented using minimax algorith</h5>
   </header>
 
   <!-- main content -->
 
   <!-- board -->
-  <section class="board container">
+  <section class="board">
     <!-- first row -->
     <div class="row clearfix">
       <div class="square border-right border-bottom" id="00"></div>
@@ -49,6 +49,13 @@
       <div class="square border-right" id="21"></div>
       <div class="square" id="22"></div>
     </div>
+  </section>
+
+  <!-- controls -->
+  <section class="container">
+    <h5 id="result" class="info">Who will start playing?</h5>
+    <button id="computer" class="btn">Computer</button>
+    <button id="player" class="btn">Player</button>
   </section>
 
   <!-- footer -->
