@@ -42,7 +42,7 @@ $(document).ready(function() {
     // only if square is still empty
     if (board.read(col, row) === '-') {
       // update view and set square on board object
-      $('#' + id).addClass("fa fa-circle-o");
+      $('#' + id).addClass('fa fa-circle-o');
       board.set('O', col, row);
 
       // calculate next move
@@ -60,16 +60,23 @@ $(document).ready(function() {
     }
   }
 
-  function computerStart() {
+  function computerStart(e) {
+    console.log('Before add class');
+    $('#' + e.target.id).addClass('btn-selected');
+    $('#' + e.target.id).siblings().removeClass('btn-selected');
+    console.log('After add class');
     board = game.start();
-    render(board);
+    // render(board);
+    console.log('Before calculating');
     nextMove = game.nextMove(board);
+    console.log('After calculating')
     board = nextMove.board;
-    console.log(board);
     render(board);
   }
 
-  function playerStart() {
+  function playerStart(e) {
+    $('#' + e.target.id).addClass('btn-selected');
+    $('#' + e.target.id).siblings().removeClass('btn-selected');
     board = game.start();
     render(board);
   }

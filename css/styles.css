@@ -9,7 +9,6 @@
 }
 .clearfix {
 	clear: both;
-	*zoom: 1;
 }
 
 /*Box Sizing Model*/
@@ -55,17 +54,6 @@ body {
 	margin-top: 0;
 	margin-bottom: 0.5em;
 	text-align: center;
-}
-
-.primary-footer {
-	text-align: center;
-	position: fixed;
-	bottom: 0;
-}
-
-.primary-footer a {
-	font-size: 18px;
-	font-weight: 100;
 }
 
 /* Board Styles */
@@ -126,6 +114,19 @@ a {
 	font-weight: 400;
 	width: 40%;
 	margin: 0 2.5%;
+	cursor: pointer;
+}
+
+.btn:focus {
+	outline:0;
+}
+
+.btn:active {
+	color: #000;
+}
+
+.btn-selected {
+	background-color: #7986AC;
 }
 
 /* Media queries for tablets */
@@ -171,7 +172,12 @@ a {
 
 	.controls {
 		width: 70%;
-		margin: 0 auto;
-		text-align: center;
+	}
+}
+
+/* Media queries for tablets */
+@media (min-width: 768px) {
+	.controls {
+		width: 40%;
 	}
 }
