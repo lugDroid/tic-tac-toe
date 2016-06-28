@@ -16,55 +16,61 @@
 
     <!-- css -->
     <link rel="stylesheet" href="bower_components/normalize-css/normalize.css">
+    <!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="css/styles.css">
 
 </head>
 
 <body>
-  <!-- header -->
-  <header class="primary-header clearfix">
+  <div class="container">
+    <!-- header -->
+    <header class="primary-header clearfix">
       <h1>Tic Tac Toe</h1>
-      <h5 class="info">Implemented using minimax algorith</h5>
-  </header>
+      <h5>You won't beat me!</h5>
+    </header>
 
-  <!-- main content -->
+    <!-- main content -->
 
-  <!-- board -->
-  <section class="board">
-    <!-- first row -->
-    <div class="row clearfix">
-      <div class="square border-right border-bottom" id="00"></div>
-      <div class="square border-right border-bottom" id="01"></div>
-      <div class="square border-bottom" id="02"></div>
-    </div>
-    <!-- second row -->
-    <div class="row clearfix">
-      <div class="square border-right border-bottom" id="10"></div>
-      <div class="square border-right border-bottom" id="11"></div>
-      <div class="square border-bottom" id="12"></div>
-    </div>
-    <!-- third row -->
-    <div class="row clearfix">
-      <div class="square border-right" id="20"></div>
-      <div class="square border-right" id="21"></div>
-      <div class="square" id="22"></div>
-    </div>
-  </section>
+    <!-- board -->
+    <section class="board">
+      <!-- first row -->
+      <div class="row clearfix">
+        <div class="square border-right border-bottom" id="00"></div>
+        <div class="square border-right border-bottom" id="01"></div>
+        <div class="square border-bottom" id="02"></div>
+      </div>
+      <!-- second row -->
+      <div class="row clearfix">
+        <div class="square border-right border-bottom" id="10"></div>
+        <div class="square border-right border-bottom" id="11"></div>
+        <div class="square border-bottom" id="12"></div>
+      </div>
+      <!-- third row -->
+      <div class="row clearfix">
+        <div class="square border-right" id="20"></div>
+        <div class="square border-right" id="21"></div>
+        <div class="square" id="22"></div>
+      </div>
+    </section>
 
-  <!-- controls -->
-  <section class="container">
-    <h5 id="result" class="info">Who will start playing?</h5>
-    <button id="computer" class="btn">Computer</button>
-    <button id="player" class="btn">Player</button>
-  </section>
+    <!-- controls -->
+    <section>
+      <h5 id="result" class="info">Who will start playing?</h5>
+      <div class="controls">
+        <button id="computer" class="btn">Computer</button>
+        <button id="player" class="btn">Player</button>
+      </div>
+    </section>
 
-  <!-- footer -->
-  <section class="primary-footer">
-    <a href="#">lugDroid | 2016</a>
-  </section>
+    <!-- footer -->
+    <!-- <section class="primary-footer">
+      <a href="#">lugDroid | 2016</a>
+    </section> -->
+  </div>
 
   <!-- scripts -->
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <!-- <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script> -->
   <script src="js/board.js"></script>
   <script src="js/game.js"></script>
   <script src="js/main.js"></script>

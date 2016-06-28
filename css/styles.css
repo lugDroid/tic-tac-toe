@@ -26,22 +26,34 @@ body {
 	font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
+.container {
+	width: 100%;
+	margin: 0 auto;
+}
+
 .primary-header {
 	text-align: center;
 }
 
 .primary-header h1 {
-	font-size: 48px;
+	font-size: 42px;
 	font-weight: 100;
 	margin-top: 0.5em;
+	margin-bottom: 0.2em;
+}
+
+.primary-header h5 {
+	font-size: 20px;
+	font-weight: 100;
+	margin-top: 0;
 	margin-bottom: 0.5em;
 }
 
 .info {
-	font-size: 24px;
+	font-size: 20px;
 	font-weight: 100;
-	margin-top: 1em;
-	margin-bottom: 1em;
+	margin-top: 0;
+	margin-bottom: 0.5em;
 	text-align: center;
 }
 
@@ -56,30 +68,24 @@ body {
 	font-weight: 100;
 }
 
-.container {
-	width: 200px;
-	margin: 0 auto;
-}
-
 /* Board Styles */
 .board {
     width: 100%;
     height: 100%;
-    background-color: #fff;
     padding-top: 20px;
     padding-bottom: 20px;
 }
 
 .row {
-  width: 450px;
+  width: 300px;
   margin: 0 auto;
 }
 
 .square {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   float: left;
-	font-size: 100px;
+	font-size: 70px;
 	text-align: center;
 	line-height: 1.5em;
 	color: #555;
@@ -104,6 +110,12 @@ a {
 }
 
 /* Buttons */
+.controls {
+	width: 90%;
+	margin: 0 auto;
+	text-align: center;
+}
+
 .btn {
 	text-transform: uppercase;
 	background-color: #fff;
@@ -112,6 +124,54 @@ a {
 	padding: 5px 10px;
 	font-size: 20px;
 	font-weight: 400;
-	width: 88px;
-	margin: 0 5px;
+	width: 40%;
+	margin: 0 2.5%;
+}
+
+/* Media queries for tablets */
+@media (min-width: 768px) {
+	.primary-header h1 {
+		font-size: 48px;
+		font-weight: 100;
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
+	}
+
+	.primary-header h5 {
+		font-size: 24px;
+		font-weight: 100;
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
+
+	.board {
+	    width: 80%;
+	    height: 80%;
+			margin: 0 auto;
+	}
+
+	.row {
+	  width: 450px;
+	  margin: 0 auto;
+	}
+
+	.square {
+	  width: 150px;
+	  height: 150px;
+		font-size: 100px;
+	}
+
+	.info {
+		font-size: 24px;
+		font-weight: 100;
+		margin-top: 1em;
+		margin-bottom: 1em;
+		text-align: center;
+	}
+
+	.controls {
+		width: 70%;
+		margin: 0 auto;
+		text-align: center;
+	}
 }
