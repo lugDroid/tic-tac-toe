@@ -1,0 +1,183 @@
+/* Clearfix */
+.clearfix:before,
+.clearfix:after {
+	content: "";
+	display: table;
+}
+.clearfix:after {
+	clear:both;
+}
+.clearfix {
+	clear: both;
+}
+
+/*Box Sizing Model*/
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* Custom Styles */
+body {
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.container {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.primary-header {
+	text-align: center;
+}
+
+.primary-header h1 {
+	font-size: 42px;
+	font-weight: 100;
+	margin-top: 0.5em;
+	margin-bottom: 0.2em;
+}
+
+.primary-header h5 {
+	font-size: 20px;
+	font-weight: 100;
+	margin-top: 0;
+	margin-bottom: 0.5em;
+}
+
+.info {
+	font-size: 20px;
+	font-weight: 100;
+	margin-top: 0;
+	margin-bottom: 0.5em;
+	text-align: center;
+}
+
+/* Board Styles */
+.board {
+    width: 100%;
+    height: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.row {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  float: left;
+	font-size: 70px;
+	text-align: center;
+	line-height: 1.5em;
+	color: #555;
+}
+
+.border-right {
+	border-right: 2px solid black;
+}
+
+.border-bottom {
+	border-bottom: 2px solid black;
+}
+
+/* Links */
+a:hover {
+	color: #a9b2b9;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+}
+
+/* Buttons */
+.controls {
+	width: 90%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.btn {
+	text-transform: uppercase;
+	background-color: #fff;
+	border: solid 1px #000;
+	border-radius: 5px;
+	padding: 5px 10px;
+	font-size: 20px;
+	font-weight: 400;
+	width: 40%;
+	margin: 0 2.5%;
+	cursor: pointer;
+}
+
+.btn:focus {
+	outline:0;
+}
+
+.btn:active {
+	color: #000;
+}
+
+.btn-selected {
+	background-color: #7986AC;
+}
+
+/* Media queries for tablets */
+@media (min-width: 768px) {
+	.primary-header h1 {
+		font-size: 48px;
+		font-weight: 100;
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
+	}
+
+	.primary-header h5 {
+		font-size: 24px;
+		font-weight: 100;
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
+
+	.board {
+	    width: 80%;
+	    height: 80%;
+			margin: 0 auto;
+	}
+
+	.row {
+	  width: 450px;
+	  margin: 0 auto;
+	}
+
+	.square {
+	  width: 150px;
+	  height: 150px;
+		font-size: 100px;
+	}
+
+	.info {
+		font-size: 24px;
+		font-weight: 100;
+		margin-top: 1em;
+		margin-bottom: 1em;
+		text-align: center;
+	}
+
+	.controls {
+		width: 70%;
+	}
+}
+
+/* Media queries for tablets */
+@media (min-width: 768px) {
+	.controls {
+		width: 40%;
+	}
+}

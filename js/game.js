@@ -1,4 +1,4 @@
-var game = (function(){
+var game = (function() {
   var board;
   var bestChoice;
 
@@ -14,13 +14,13 @@ var game = (function(){
     var result = []
     for (var i = 0; i < SIZE; i++) {
       for (var j = 0; j < SIZE; j++) {
-          if (board.read(i, j) === '-') {
-            //console.log('Empty position found at ' + i + ', ' + j);
-            newBoard = board.clone();
-            newBoard.set(player, i, j);
-            result.push(newBoard);
-            //console.log(result.length + ' new boards generated so far');
-          }
+        if (board.read(i, j) === '-') {
+          //console.log('Empty position found at ' + i + ', ' + j);
+          newBoard = board.clone();
+          newBoard.set(player, i, j);
+          result.push(newBoard);
+          //console.log(result.length + ' new boards generated so far');
+        }
       }
     }
     return result;
