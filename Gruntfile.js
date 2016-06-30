@@ -3,8 +3,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-express');
 
   grunt.initConfig({
     concat: {
@@ -48,31 +46,8 @@ module.exports = function(grunt) {
           spawn: false,
         }
       }
-    },
-    express: {
-      all: {
-        options: {
-          port: 3000,
-          hostname: 'localhost',
-          bases: ['.'],
-          livereload: true
-        }
-      }
     }
-    // grunt-contrib-connect will serve the files of the project
-    // on specified port and hostname
-    // connect: {
-    //   all: {
-    //     options: {
-    //       port: 35729,
-    //       hostname: "0.0.0.0",
-    //       // Prevents Grunt to close just after the task (starting the server) completes
-    //       // This will be removed later as `watch` will take care of that
-    //       // keepalive: true
-    //     }
-    //   }
-    // }
   });
 
-  grunt.registerTask('default', ['concat', 'copy', 'express', 'watch']);
+  grunt.registerTask('default', ['concat', 'copy', 'watch']);
 };
