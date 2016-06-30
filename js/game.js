@@ -12,8 +12,8 @@ var game = (function() {
   // and player (X or O)
   function generate(board, player) {
     var result = []
-    for (var i = 0; i < SIZE; i++) {
-      for (var j = 0; j < SIZE; j++) {
+    for (var i = 0; i < board.size(); i++) {
+      for (var j = 0; j < board.size(); j++) {
         if (board.read(i, j) === '-') {
           //console.log('Empty position found at ' + i + ', ' + j);
           newBoard = board.clone();

@@ -6,9 +6,11 @@ $(document).ready(function() {
 
   // cache DOM
   var $square = $('.row .square');
-  var $squares = [[$('#00'), $('#01'), $('#02')],
-                  [$('#10'), $('#11'), $('#12')],
-                  [$('#20'), $('#21'), $('#22')]];
+  var $squares = [
+    [$('#00'), $('#01'), $('#02')],
+    [$('#10'), $('#11'), $('#12')],
+    [$('#20'), $('#21'), $('#22')]
+  ];
   var $result = $('#result');
   var $computerBtn = $('#computer');
   var $playerBtn = $('#player');
@@ -18,10 +20,10 @@ $(document).ready(function() {
   $computerBtn.click(computerStart);
   $playerBtn.click(playerStart);
 
-  // render
+  // render function
   function render(board) {
-    for (var i = 0; i < SIZE; i++) {
-      for (var j = 0; j < SIZE; j++) {
+    for (var i = 0; i < board.size(); i++) {
+      for (var j = 0; j < board.size(); j++) {
         if (board.read(i, j) === 'X') {
           $squares[i][j].addClass('fa fa-times');
         } else if (board.read(i, j) === 'O') {
@@ -38,9 +40,11 @@ $(document).ready(function() {
     var id = e.target.id;
     var col = id[0];
     var row = id[1];
+    console.log(board.isWin());
 
     // only if square is still empty
-    if (board.read(col, row) === '-') {
+    // and board is not already a win
+    if ((board.read(col, row) === '-') & (board.isWin() === -1)) {
       // update view and set square on board object
       $('#' + id).addClass('fa fa-circle-o');
       board.set('O', col, row);

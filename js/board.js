@@ -1,7 +1,6 @@
-  var SIZE = 3;
-
   // board object
   function Board() {
+    var SIZE = 3;
     var state = [
       ['-', '-', '-'],
       ['-', '-', '-'],
@@ -17,6 +16,11 @@
     // '-' not used, 'X' or 'O' used by players
     this.read = function(row, col) {
       return state[row][col];
+    }
+
+    // return board SIZE
+    this.size = function() {
+      return SIZE;
     }
 
     // clones boards and returns a new board object
