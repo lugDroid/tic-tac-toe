@@ -9,7 +9,11 @@
 
     // sets the given position in the board i,j to a player 'X' or 'O'
     this.set = function(player, row, col) {
-      state[row][col] = player;
+      if ((player === 'X') || (player === 'O') || (player === '-')) {
+        state[row][col] = player;
+      } else {
+        console.log('Not a valid player symbol: ' + player);
+      }
     }
 
     // reads the current state of a given position
@@ -115,11 +119,9 @@ var game = (function() {
     for (var i = 0; i < board.size(); i++) {
       for (var j = 0; j < board.size(); j++) {
         if (board.read(i, j) === '-') {
-          //console.log('Empty position found at ' + i + ', ' + j);
           newBoard = board.clone();
           newBoard.set(player, i, j);
           result.push(newBoard);
-          //console.log(result.length + ' new boards generated so far');
         }
       }
     }
@@ -129,13 +131,10 @@ var game = (function() {
   // return game score
   function score(board, maxPlayer, minPlayer, depth) {
     if (board.isWin() === maxPlayer) {
-      //console.log('Win: ' + maxPlayer);
       return 10 - depth;
     } else if (board.isWin() === minPlayer) {
-      //console.log('Win: ' + minPlayer);
       return depth - 10;
     } else {
-      //console.log('Draw');
       return 0;
     }
   }
@@ -161,8 +160,7 @@ var game = (function() {
       }
       var maxScore = Math.max.apply(null, scores); // find min value in scores
       bestChoice = nextMoves[scores.indexOf(maxScore)];
-      // console.log("Board score (max):" + maxScore);
-      // bestChoice.print();
+
       return maxScore;
     } else {
       // generate all possible next moves
@@ -174,8 +172,7 @@ var game = (function() {
       }
       var minScore = Math.min.apply(null, scores); // find max value in scores
       bestChoice = nextMoves[scores.indexOf(minScore)];
-      // console.log("Board score (min): " + minScore);
-      // bestChoice.print();
+
       return minScore;
     }
   }
@@ -192,15 +189,11 @@ var game = (function() {
   // returned object
   return {
     start: start,
-    // update: update,
     nextMove: nextMove
   }
 })();
 
 $(document).ready(function() {
-  // create new board
-  // TODO: create a start button, bind it and move this part to
-  // game.start() method
   var board, nextMove;
 
   // cache DOM
@@ -234,12 +227,24 @@ $(document).ready(function() {
     }
   }
 
-  // binded functions
+  // start new game function
+  function startGame(e) {
+    // add and remove button clicked state
+    $('#' + e.target.id).addClass('btn-selected');
+    $('#' + e.target.id).siblings().removeClass('btn-selected');
+
+    // start new game
+    board = game.start();
+
+    // update game info
+    updateInfo(board);
+  }
+
+  // player click on board
   function playerMove(e) {
     var id = e.target.id;
     var col = id[0];
     var row = id[1];
-    console.log(board.isWin());
 
     // only if square is still empty
     // and board is not already a win
@@ -254,33 +259,44 @@ $(document).ready(function() {
       // render next board
       render(board);
 
-      // generate resul
-      if (nextMove.score >= 9) {
-        $('#result').html('You lost!');
-      } else if (nextMove.score <= -9) {
-        $('#result').html('You won!');
-      }
+      updateInfo(nextMove.score);
     }
   }
 
+  // display game info
+  function updateInfo(status) {
+    var message;
+    if (typeof status === Object) {
+      message = board.isDraw() ? 'Draw! Want to play again?' : 'Your turn';
+    } else {
+      if (status >= 9) {
+        message = 'You lost! Want to play again?';
+      } else if (status <= -9) {
+        message = 'You won! Want to play again?';
+      } else {
+        message = 'Your turn';
+      }
+    }
+
+    $($result).html(message);
+  }
+
   function computerStart(e) {
-    console.log('Before add class');
-    $('#' + e.target.id).addClass('btn-selected');
-    $('#' + e.target.id).siblings().removeClass('btn-selected');
-    console.log('After add class');
-    board = game.start();
-    // render(board);
-    console.log('Before calculating');
+    // update buttons and start a new game
+    startGame(e);
+
+    // calculate computer move
     nextMove = game.nextMove(board);
-    console.log('After calculating')
     board = nextMove.board;
+
     render(board);
   }
 
   function playerStart(e) {
-    $('#' + e.target.id).addClass('btn-selected');
-    $('#' + e.target.id).siblings().removeClass('btn-selected');
-    board = game.start();
+    // update buttons and start a new game
+    startGame(e);
+
+    // render new board
     render(board);
   }
 });

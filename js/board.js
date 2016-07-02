@@ -9,7 +9,11 @@
 
     // sets the given position in the board i,j to a player 'X' or 'O'
     this.set = function(player, row, col) {
-      state[row][col] = player;
+      if ((player === 'X') || (player === 'O') || (player === '-')) {
+        state[row][col] = player;
+      } else {
+        console.log('Not a valid player symbol: ' + player);
+      }
     }
 
     // reads the current state of a given position

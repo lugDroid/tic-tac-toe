@@ -15,11 +15,9 @@ var game = (function() {
     for (var i = 0; i < board.size(); i++) {
       for (var j = 0; j < board.size(); j++) {
         if (board.read(i, j) === '-') {
-          //console.log('Empty position found at ' + i + ', ' + j);
           newBoard = board.clone();
           newBoard.set(player, i, j);
           result.push(newBoard);
-          //console.log(result.length + ' new boards generated so far');
         }
       }
     }
@@ -29,13 +27,10 @@ var game = (function() {
   // return game score
   function score(board, maxPlayer, minPlayer, depth) {
     if (board.isWin() === maxPlayer) {
-      //console.log('Win: ' + maxPlayer);
       return 10 - depth;
     } else if (board.isWin() === minPlayer) {
-      //console.log('Win: ' + minPlayer);
       return depth - 10;
     } else {
-      //console.log('Draw');
       return 0;
     }
   }
@@ -61,8 +56,7 @@ var game = (function() {
       }
       var maxScore = Math.max.apply(null, scores); // find min value in scores
       bestChoice = nextMoves[scores.indexOf(maxScore)];
-      // console.log("Board score (max):" + maxScore);
-      // bestChoice.print();
+
       return maxScore;
     } else {
       // generate all possible next moves
@@ -74,8 +68,7 @@ var game = (function() {
       }
       var minScore = Math.min.apply(null, scores); // find max value in scores
       bestChoice = nextMoves[scores.indexOf(minScore)];
-      // console.log("Board score (min): " + minScore);
-      // bestChoice.print();
+
       return minScore;
     }
   }
@@ -92,7 +85,6 @@ var game = (function() {
   // returned object
   return {
     start: start,
-    // update: update,
     nextMove: nextMove
   }
 })();
