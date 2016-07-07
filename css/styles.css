@@ -49,7 +49,7 @@ body {
 }
 
 .info {
-	font-size: 20px;
+	font-size: 32px;
 	font-weight: 100;
 	margin-top: 0;
 	margin-bottom: 0.5em;
@@ -129,7 +129,7 @@ a {
 	background-color: #7986AC;
 }
 
-/* Media queries for tablets */
+/* Media queries for medium screens */
 @media (min-width: 768px) {
 	.primary-header h1 {
 		font-size: 48px;
@@ -163,7 +163,7 @@ a {
 	}
 
 	.info {
-		font-size: 24px;
+		font-size: 32px;
 		font-weight: 100;
 		margin-top: 1em;
 		margin-bottom: 1em;
@@ -175,7 +175,7 @@ a {
 	}
 }
 
-/* Media queries for tablets */
+/* Media queries for big screens */
 @media (min-width: 768px) {
 	.controls {
 		width: 40%;

@@ -237,7 +237,7 @@ $(document).ready(function() {
     board = game.start();
 
     // update game info
-    updateInfo(board);
+    $($result).html('Your turn');
   }
 
   // player click on board
@@ -259,26 +259,16 @@ $(document).ready(function() {
       // render next board
       render(board);
 
-      updateInfo(nextMove.score);
-    }
-  }
-
-  // display game info
-  function updateInfo(status) {
-    var message;
-    if (typeof status === Object) {
-      message = board.isDraw() ? 'Draw! Want to play again?' : 'Your turn';
-    } else {
-      if (status >= 9) {
-        message = 'You lost! Want to play again?';
-      } else if (status <= -9) {
-        message = 'You won! Want to play again?';
+      if (nextMove.score >= 9) {
+        $($result).html('You lost! Want to play again?');
+      } else if (nextMove.score <= -9) {
+        $($result).html('You won! Want to play again?');
+      } else if (board.isDraw()) {
+        $($result).html('Draw! Want to play again?');
       } else {
-        message = 'Your turn';
+        $($result).html('Your turn');
       }
     }
-
-    $($result).html(message);
   }
 
   function computerStart(e) {
