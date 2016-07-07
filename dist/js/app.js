@@ -218,9 +218,9 @@ $(document).ready(function() {
     for (var i = 0; i < board.size(); i++) {
       for (var j = 0; j < board.size(); j++) {
         if (board.read(i, j) === 'X') {
-          $squares[i][j].addClass('fa fa-times');
+          $squares[i][j].removeClass('fa-circle-o').addClass('fa fa-times');
         } else if (board.read(i, j) === 'O') {
-          $squares[i][j].addClass('fa fa-circle-o');
+          $squares[i][j].removeClass('fa-times').addClass('fa fa-circle-o');
         } else {
           $squares[i][j].removeClass('fa fa-circle-o fa-times');
         }
@@ -230,10 +230,6 @@ $(document).ready(function() {
 
   // start new game function
   function startGame(e) {
-    // add and remove button clicked state
-    $(this).addClass('btn-selected');
-    $(this).siblings().removeClass('btn-selected');
-
     // start new game
     board = game.start();
 
@@ -300,6 +296,10 @@ $(document).ready(function() {
   }
 
   function computerStart(e) {
+    // add and remove button clicked state
+    $(this).addClass('btn-selected').siblings().removeClass('btn-selected');
+    // $(this).siblings().removeClass('btn-selected');
+
     // update buttons and start a new game
     startGame(e);
 
@@ -311,6 +311,8 @@ $(document).ready(function() {
   }
 
   function playerStart(e) {
+    $(this).addClass('btn-selected').siblings().removeClass('btn-selected');
+
     // update buttons and start a new game
     startGame(e);
 
