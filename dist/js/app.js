@@ -209,6 +209,7 @@ $(document).ready(function() {
 
   // bind events
   $square.click(playerMove);
+  $square.hover(overlayMove, removeOverlay);
   $computerBtn.click(computerStart);
   $playerBtn.click(playerStart);
 
@@ -230,8 +231,8 @@ $(document).ready(function() {
   // start new game function
   function startGame(e) {
     // add and remove button clicked state
-    $('#' + e.target.id).addClass('btn-selected');
-    $('#' + e.target.id).siblings().removeClass('btn-selected');
+    $(this).addClass('btn-selected');
+    $(this).siblings().removeClass('btn-selected');
 
     // start new game
     board = game.start();
@@ -240,17 +241,44 @@ $(document).ready(function() {
     $($result).html('Your turn');
   }
 
+  // overlay next-move function
+  function overlayMove(e) {
+    // extract col and row info from html element id
+    var col = this.id[0];
+    var row = this.id[1];
+    // check if game is already started
+    if (board !== undefined) {
+      // add overlay if empty squre
+      if (board.read(col, row) === '-') {
+        $(this).addClass('fa fa-circle-o dim');
+      }
+    }
+  }
+
+  function removeOverlay() {
+    // extract col and row info from html element id
+    var col = this.id[0];
+    var row = this.id[1];
+    // check if game is already started
+    if (board !== undefined) {
+      // add overlay if empty squre
+      if (board.read(col, row) === '-') {
+        $(this).removeClass('fa fa-circle-o dim');
+      }
+    }
+  }
+
   // player click on board
   function playerMove(e) {
-    var id = e.target.id;
-    var col = id[0];
-    var row = id[1];
+    var col = this.id[0];
+    var row = this.id[1];
 
     // only if square is still empty
     // and board is not already a win
     if ((board.read(col, row) === '-') & (board.isWin() === -1)) {
       // update view and set square on board object
-      $('#' + id).addClass('fa fa-circle-o');
+      $(this).addClass('fa fa-circle-o');
+      $(this).removeClass('dim');
       board.set('O', col, row);
 
       // calculate next move

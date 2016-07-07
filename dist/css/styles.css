@@ -87,6 +87,10 @@ body {
 	border-bottom: 2px solid black;
 }
 
+.dim {
+	color: #aaa;
+}
+
 /* Links */
 a:hover {
 	color: #a9b2b9;
