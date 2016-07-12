@@ -11,12 +11,15 @@ $(document).ready(function() {
   var $result = $('#result');
   var $computerBtn = $('#computer');
   var $playerBtn = $('#player');
+  var $restartBtn = $('#restart');
+  var $controls = $('.controls');
 
   // bind events
   $square.click(playerMove);
   $square.hover(overlayMove, removeOverlay);
   $computerBtn.click(computerStart);
   $playerBtn.click(playerStart);
+  $restartBtn.click(restart);
 
   // render function
   function render(board) {
@@ -90,15 +93,18 @@ $(document).ready(function() {
 
       if (nextMove.score >= 9) {
         $($result).html('You lost! Want to play again?');
-        $('.controls').children().show();
+        $($controls).children().show();
+        $($restartBtn).hide();
       } else if (nextMove.score <= -9) {
         $($result).html('You won! Want to play again?');
-        $('.controls').children().show();
+        $($controls).children().show();
+        $($restartBtn).hide();
       } else if (board.isDraw()) {
         $($result).html('Draw! Want to play again?');
-        $('.controls').children().show();
+        $($controls).children().show();
+        $($restartBtn).hide();
       } else {
-        $($result).html('Your turn');
+        $($result).html('Your turn...');
       }
     }
   }
@@ -109,6 +115,7 @@ $(document).ready(function() {
     // $(this).siblings().removeClass('btn-selected');
     $(this).hide();
     $(this).siblings().hide();
+    $($restartBtn).show().css('display', 'block');
 
     // update buttons and start a new game
     startGame(e);
@@ -124,11 +131,27 @@ $(document).ready(function() {
     //$(this).addClass('btn-selected').siblings().removeClass('btn-selected');
     $(this).hide();
     $(this).siblings().hide();
+    $($restartBtn).show().css('display', 'block');
 
     // update buttons and start a new game
     startGame(e);
 
     // render new board
     render(board);
+  }
+
+  function restart() {
+    // start a new game
+    board = game.start();
+
+    // render new board
+    render(board);
+
+    // hide restart button and show players buttons
+    $(this).hide();
+    $($controls).children().show();
+
+    // update info
+    $($result).html('Who will start playing?');
   }
 });

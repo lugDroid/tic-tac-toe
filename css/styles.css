@@ -121,6 +121,13 @@ a {
 	cursor: pointer;
 }
 
+.user-info > .btn {
+	width: 180px;
+	margin: 3% auto;
+	display: block;
+	display: none;
+}
+
 .btn:focus {
 	outline:0;
 }
