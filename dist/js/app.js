@@ -305,9 +305,7 @@ $(document).ready(function() {
   }
 
   function computerStart(e) {
-    // add and remove button clicked state
-    //$(this).addClass('btn-selected').siblings().removeClass('btn-selected');
-    // $(this).siblings().removeClass('btn-selected');
+    // hide players buttons and show restart button
     $(this).hide();
     $(this).siblings().hide();
     $($restartBtn).show().css('display', 'block');
@@ -323,7 +321,7 @@ $(document).ready(function() {
   }
 
   function playerStart(e) {
-    //$(this).addClass('btn-selected').siblings().removeClass('btn-selected');
+    // hide players buttons and show restart button
     $(this).hide();
     $(this).siblings().hide();
     $($restartBtn).show().css('display', 'block');
