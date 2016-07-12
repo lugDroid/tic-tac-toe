@@ -90,10 +90,13 @@ $(document).ready(function() {
 
       if (nextMove.score >= 9) {
         $($result).html('You lost! Want to play again?');
+        $('.controls').children().show();
       } else if (nextMove.score <= -9) {
         $($result).html('You won! Want to play again?');
+        $('.controls').children().show();
       } else if (board.isDraw()) {
         $($result).html('Draw! Want to play again?');
+        $('.controls').children().show();
       } else {
         $($result).html('Your turn');
       }
@@ -102,8 +105,10 @@ $(document).ready(function() {
 
   function computerStart(e) {
     // add and remove button clicked state
-    $(this).addClass('btn-selected').siblings().removeClass('btn-selected');
+    //$(this).addClass('btn-selected').siblings().removeClass('btn-selected');
     // $(this).siblings().removeClass('btn-selected');
+    $(this).hide();
+    $(this).siblings().hide();
 
     // update buttons and start a new game
     startGame(e);
@@ -116,7 +121,9 @@ $(document).ready(function() {
   }
 
   function playerStart(e) {
-    $(this).addClass('btn-selected').siblings().removeClass('btn-selected');
+    //$(this).addClass('btn-selected').siblings().removeClass('btn-selected');
+    $(this).hide();
+    $(this).siblings().hide();
 
     // update buttons and start a new game
     startGame(e);
