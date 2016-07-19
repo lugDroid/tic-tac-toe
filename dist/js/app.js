@@ -212,8 +212,8 @@ $(document).ready(function() {
   // bind events
   $square.click(playerMove);
   $square.hover(overlayMove, removeOverlay);
-  $computerBtn.click(computerStart);
-  $playerBtn.click(playerStart);
+  $computerBtn.click(startGame);
+  $playerBtn.click(startGame);
   $restartBtn.click(restart);
 
   // render function
@@ -229,15 +229,6 @@ $(document).ready(function() {
         }
       }
     }
-  }
-
-  // start new game function
-  function startGame(e) {
-    // start new game
-    board = game.start();
-
-    // update game info
-    $($result).html('Your turn');
   }
 
   // overlay next-move function
@@ -304,32 +295,24 @@ $(document).ready(function() {
     }
   }
 
-  function computerStart(e) {
+  function startGame() {
     // hide players buttons and show restart button
     $(this).hide();
     $(this).siblings().hide();
     $($restartBtn).show().css('display', 'block');
 
-    // update buttons and start a new game
-    startGame(e);
+    // start new game
+    board = game.start();
+
+    // update game info
+    $($result).html('Your turn');
 
     // calculate computer move
-    nextMove = game.nextMove(board);
-    board = nextMove.board;
+    if (this.id === 'computer') {
+      nextMove = game.nextMove(board);
+      board = nextMove.board;
+    }
 
-    render(board);
-  }
-
-  function playerStart(e) {
-    // hide players buttons and show restart button
-    $(this).hide();
-    $(this).siblings().hide();
-    $($restartBtn).show().css('display', 'block');
-
-    // update buttons and start a new game
-    startGame(e);
-
-    // render new board
     render(board);
   }
 
