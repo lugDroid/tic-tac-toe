@@ -212,8 +212,10 @@ $(document).ready(function() {
   // bind events
   $square.click(playerMove);
   $square.hover(overlayMove, removeOverlay);
-  $computerBtn.click(startGame);
-  $playerBtn.click(startGame);
+  $computerBtn.mousedown(startGame);
+  $playerBtn.mousedown(startGame);
+  $computerBtn.mouseup(firstMove);
+  $playerBtn.mouseup(firstMove);
   $restartBtn.click(restart);
 
   // render function
@@ -296,22 +298,27 @@ $(document).ready(function() {
   }
 
   function startGame() {
+    $($result).html('Calculating...');
+
+    // start new game
+    board = game.start();
+    render(board);
+  }
+
+  function firstMove() {
     // hide players buttons and show restart button
     $(this).hide();
     $(this).siblings().hide();
     $($restartBtn).show().css('display', 'block');
-
-    // start new game
-    board = game.start();
-
-    // update game info
-    $($result).html('Your turn');
 
     // calculate computer move
     if (this.id === 'computer') {
       nextMove = game.nextMove(board);
       board = nextMove.board;
     }
+
+    // update game info
+    $($result).html('Your turn');
 
     render(board);
   }
