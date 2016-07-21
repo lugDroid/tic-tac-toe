@@ -45,9 +45,11 @@ $(document).ready(function() {
     var row = this.id[1];
     // check if game is already started
     if (board !== undefined) {
-      // add overlay if empty squre
-      if (board.read(col, row) === '-') {
-        $(this).addClass('fa fa-circle-o dim');
+      if (board.isWin() === -1) {
+        // add overlay if empty squre
+        if (board.read(col, row) === '-') {
+          $(this).addClass('fa fa-circle-o dim');
+        }
       }
     }
   }
@@ -72,7 +74,8 @@ $(document).ready(function() {
 
     // only if square is still empty
     // and board is not already a win
-    if ((board.read(col, row) === '-') & (board.isWin() === -1)) {
+    // and is player tunr
+    if ((board.read(col, row) === '-') && (board.isWin() === -1)) {
       // update view and set square on board object
       $(this).addClass('fa fa-circle-o');
       $(this).removeClass('dim');
@@ -108,6 +111,9 @@ $(document).ready(function() {
     // start new game
     board = game.start();
     render(board);
+
+    // unbind square click listener to prevent clicks while computing next move
+    //$square.unbind('click');
   }
 
   function firstMove() {
@@ -118,14 +124,18 @@ $(document).ready(function() {
 
     // calculate computer move
     if (this.id === 'computer') {
-      nextMove = game.nextMove(board);
-      board = nextMove.board;
+      //nextMove = game.nextMove(board);
+      //board = nextMove.board;
+      board = game.computerFirstMove();
     }
 
     // update game info
     $($result).html('Your turn');
 
     render(board);
+
+    // bind square click listener again
+    //$square.click(playerMove);
   }
 
   function restart() {

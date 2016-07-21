@@ -82,9 +82,33 @@ var game = (function() {
     }
   }
 
+  // function to return one of the squares as next move if computer starts game
+  function computerFirstMove() {
+    var n = Math.round(Math.random() * 3);
+    console.log(n);
+
+    switch (n) {
+      case 0:
+        board.set('X', 0, 0);
+        break;
+      case 1:
+        board.set('X', 0, 2);
+        break;
+      case 2:
+        board.set('X', 2, 0);
+        break;
+      case 3:
+        board.set('X', 2, 2);
+        break;
+    }
+
+    return board;
+  }
+
   // returned object
   return {
     start: start,
-    nextMove: nextMove
+    nextMove: nextMove,
+    computerFirstMove: computerFirstMove
   }
 })();
