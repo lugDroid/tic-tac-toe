@@ -265,7 +265,7 @@ $(document).ready(function() {
     // check if game is already started
     if (board !== undefined) {
       if (board.isWin() === -1) {
-        // add overlay if empty squre
+        // add overlay if empty square
         if (board.read(col, row) === '-') {
           $(this).addClass('fa fa-circle-o dim');
         }
@@ -370,5 +370,8 @@ $(document).ready(function() {
 
     // update info
     $($result).html('Who will start playing?');
+
+    // make board not playable
+    board = undefined;
   }
 });
